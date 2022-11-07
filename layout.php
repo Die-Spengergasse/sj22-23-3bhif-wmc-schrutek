@@ -13,4 +13,28 @@
         renderBody();
     ?>
 </body>
+
+<script>
+    function getDetails(guid) {
+        fetch("/?action=userdetails&guid=" + guid)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            let detailsContainer = document.getElementById('detailsContainer');
+            let containerContent =
+            `
+                <dl>
+                    <dt>GUID:</dt>
+                    <dd>${data.guid}</dd>
+                    <dt>User Name:</dt>
+                    <dd>${data.username}</dd>
+                </dl>
+            `
+            detailsContainer.innerHTML = containerContent;
+        })
+    }
+</script>
+
 </html>

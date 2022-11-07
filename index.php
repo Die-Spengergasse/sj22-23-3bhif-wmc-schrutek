@@ -1,20 +1,14 @@
 <?php
-    require('user.class.php');
+    require('models/user.class.php');
+    require('models/product.class.php');
 
     function renderBody()
     {
-        if (isset($GLOBALS['result']))
-        {
-            echo <<<HTML
-            <ul>
-            HTML;
-            foreach ($GLOBALS['result'] as $user)
-            {
-                echo('<li>' . $user->username . '</li>');
-            }
-            echo <<<HTML
-            </ul>
-            HTML;
+        $filename = 'views/' . $GLOBALS['viewName'] . '.php';
+        if (file_exists($filename)) {
+            require($filename);
+        } else {
+            require('views/notFound.php');
         }
     }
 
@@ -27,12 +21,19 @@
         $action = $_GET['action'];
         switch($action)
         {
-            case 'getAll':
-                $result = $pdo->query("SELECT * FROM User")->fetchAll(PDO::FETCH_CLASS, 'User');
+            case 'products':
+                $result = $pdo->query("SELECT * FROM Product")->fetchAll(PDO::FETCH_CLASS, 'Product');
+                $viewName = 'products';
                 require('layout.php');
                 exit();
                 break;
-            case 'details':
+            case 'users':
+                $result = $pdo->query("SELECT * FROM User")->fetchAll(PDO::FETCH_CLASS, 'User');
+                $viewName = 'users';
+                require('layout.php');
+                exit();
+                break;
+            case 'userdetails':
                 // GUID-Parameter auslesen
                 if (isset($_GET['guid']))
                 {
@@ -43,12 +44,12 @@
                 }
                 else
                 {
-                    require('notFound.php');
+                    require('views/notFound.php');
                 }
                 exit();
                 break;
             default:
-                require('notFound.php');
+                require('views/notFound.php');
                 exit();
                 break;
         }
