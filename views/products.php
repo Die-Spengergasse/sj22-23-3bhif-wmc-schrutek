@@ -1,12 +1,8 @@
-<h3>Product List:</h3>
-<p>
-    Info zur den Produkten...
-</p>
+<h3>Produkte:</h3>
+<p>Liste aller Produkte...</p>
 
 <?php
 
-foreach ($GLOBALS['result'] as $product) {
-    echo ($product->name . '<br/>');
-}
+
 
 ?>
