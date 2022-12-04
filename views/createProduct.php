@@ -1,11 +1,13 @@
+<h1>Create Product</h1>
+
 <form>
-    <label for="input-product-name" >Produktname:</label>
+    <label for="input-productName" >Produktname:</label>
     <input
       type="text"
-      id="input-product-name"
+      id="input-productName"
       name="productName"
       placeholder="Produktname eingeben"
       required
     />
-    <button type="button" onclick="createProduct();">Senden...</button>
+    <button type="button" onclick="createProduct();">SEND</button>
 </form>

@@ -89,7 +89,6 @@
             case 'new':
                 $viewName = 'createProduct';
                 require('layout.php');
-                //exit();
                 break;
             default:
                 require('views/notFound.php');
