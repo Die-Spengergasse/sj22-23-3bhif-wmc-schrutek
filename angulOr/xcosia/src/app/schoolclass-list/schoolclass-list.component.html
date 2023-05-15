@@ -1,7 +1,13 @@
 <p>schoolclass-list works!</p>
 
-
-
 <ng-container *ngFor="let schoolClass of getData()">
-    <app-school-class [schoolClass] = "schoolClass"></app-school-class>
+    <spg-school-class 
+        [schoolClass]="schoolClass" 
+        (schoolClassClickEvent)="setSelectedSchoolClass($event)">
+    </spg-school-class>
 </ng-container>
+
+<!-- 
+    Liste der Studenten der ausgewählten klasse anzeigen
+    !! 2-spaltig !!
+ -->

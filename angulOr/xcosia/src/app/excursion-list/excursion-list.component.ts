@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-excursion-list',
+  selector: 'spg-excursion-list',
   templateUrl: './excursion-list.component.html',
   styleUrls: ['./excursion-list.component.css']
 })
